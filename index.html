@@ -15,12 +15,63 @@
     <!-- Your Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         .education-photo {
             width: 100%;
             max-width: 300px;
             height: auto;
             border-radius: 8px;
             object-fit: cover;
+        }
+
+        /* Flow Animation per Section */
+        .flow-item {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        section.is-visible .flow-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delay bertahap di tiap section */
+        section.is-visible .flow-item:nth-child(2) {
+            transition-delay: 0.12s;
+        }
+        section.is-visible .flow-item:nth-child(3) {
+            transition-delay: 0.24s;
+        }
+        section.is-visible .flow-item:nth-child(4) {
+            transition-delay: 0.36s;
+        }
+
+        /* Stagger khusus kartu di dalam Projects Grid */
+        .projects-grid .project-card.flow-item:nth-child(1) { transition-delay: 0.1s; }
+        .projects-grid .project-card.flow-item:nth-child(2) { transition-delay: 0.2s; }
+        .projects-grid .project-card.flow-item:nth-child(3) { transition-delay: 0.3s; }
+        .projects-grid .project-card.flow-item:nth-child(4) { transition-delay: 0.4s; }
+
+        /* Stagger khusus kolom di Skills Table */
+        .skills-table .skill-column.flow-item:nth-child(1) { transition-delay: 0.12s; }
+        .skills-table .skill-column.flow-item:nth-child(2) { transition-delay: 0.24s; }
+
+        /* Hormati preferensi reduced motion pengguna */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            .flow-item {
+                opacity: 1;
+                transform: none;
+                transition: none;
+            }
         }
     </style>
 </head>
@@ -32,7 +83,7 @@
             <h1>Bima</h1>
             <p>Data Analyst</p>
             <div class="social-links">
-                  <a href="https://www.linkedin.com/in/bima-kaizen" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/bima-kaizen" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
                 <a href="Bima-resume.pdf" download title="Download CV"><i class="fas fa-file-arrow-down"></i></a>
             </div>
         </div>
@@ -53,8 +104,8 @@
     <!-- ABOUT SECTION -->
     <section id="about" class="section">
         <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
+            <h2 class="flow-item">About Me</h2>
+            <div class="about-content flow-item">
                 <img src="pas foto 3x4,.jpg" alt="Bima" class="profile-photo">
                 <div class="about-text">
                     <p>Seorang fresh graduate di bidang Operation Management. Terlibat dalam beberapa proyek penelitian, baik itu penelitian kuliah luar kampus maupun penelitian dosen tingkat universitas untuk mengembangkan keterampilan dalam mengolah data dan statistik. Memiliki pemahaman tentang data cleaning, data analysis dan data visualization.</p>
@@ -67,8 +118,8 @@
     <!-- EDUCATION -->
     <section id="education" class="section">
         <div class="container">
-            <h2>Education</h2>
-            <div class="about-content">
+            <h2 class="flow-item">Education</h2>
+            <div class="about-content flow-item">
                 <img src="foto wisuda.jpg" alt="Foto wisuda" class="education-photo">
                 <div class="about-text">
                     <p>Berkuliah di Program Studi Manajemen, Universitas Bangka Belitung selama 3 tahun 11 bulan, dengan IPK 3,66.</p>
@@ -81,35 +132,35 @@
     <!-- PROJECTS SECTION -->
     <section id="projects" class="section">
         <div class="container">
-            <h2>My Projects</h2>
+            <h2 class="flow-item">My Projects</h2>
             <div class="projects-grid">
-                
+
                 <!-- KLK RISET LADA PUTIH-->
-                <div class="project-card">
-                    <img src="klk lada putih" alt=" KLK RISET LADA PUTIH Preview">
+                <div class="project-card flow-item">
+                    <img src="klk lada putih" alt="KLK RISET LADA PUTIH Preview">
                     <div class="project-card-content">
                         <h3>KLK RISET LADA PUTIH</h3>
                         <p>Analisis Sensitivitas Terhadap Perubahan Harga Dan Biaya Pada Usahatani Lada Putih Di Namang, Bangka Tengah. Analisis ini terdiri dari beberapa skenario yang mungkin akan dihadapi oleh petani lada putih</p>
                         <div class="project-buttons">
-                           <a href="https://docs.google.com/spreadsheets/d/1F0fiRuvx05Qf3bui-uvv8ATIbLAutoaZ/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" class="btn btn-secondary">View Dashboard</a>
+                            <a href="https://docs.google.com/spreadsheets/d/1F0fiRuvx05Qf3bui-uvv8ATIbLAutoaZ/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" class="btn btn-secondary">View Dashboard</a>
                         </div>
                     </div>
                 </div>
 
-                <!--Tugas Akhir -->
-                <div class="project-card">
+                <!-- Tugas Akhir -->
+                <div class="project-card flow-item">
                     <img src="ss tugas akhir.png" alt="Tugas Akhir Preview">
                     <div class="project-card-content">
                         <h3>Tugas Akhir</h3>
                         <p>Analisis Kebutuhan Petugas pada Layanan Instalasi farmasi Pasien Rawat Jalan Puskesmas Sungailiat. Analisis ini bertujuan untuk menghitung berapa jumlah kebutuhan petugas farmasi yang optimal.</p>
                         <div class="project-buttons">
-                             <a href="https://docs.google.com/spreadsheets/d/1ugrTBzDkcXZ1THFmb-n8Q9xleXE4R2Zc/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" class="btn btn-secondary">View Dashboard</a>
+                            <a href="https://docs.google.com/spreadsheets/d/1ugrTBzDkcXZ1THFmb-n8Q9xleXE4R2Zc/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" class="btn btn-secondary">View Dashboard</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Latihan Data Analyst: Business Analyst-->
-                <div class="project-card">
+                <div class="project-card flow-item">
                     <img src="ssets/images/aproject-placeholder-3.jpg" alt="Project Three Preview">
                     <div class="project-card-content">
                         <h3>Latihan Data Analyst</h3>
@@ -122,7 +173,7 @@
                 </div>
 
                 <!-- Latihan Dashbord -->
-                <div class="project-card">
+                <div class="project-card flow-item">
                     <img src="ss dashbord.png" alt="Latihan Dashbord Preview">
                     <div class="project-card-content">
                         <h3>Latihan Membuat Dashbord</h3>
@@ -140,13 +191,13 @@
     <!-- SKILLS SECTION -->
     <section id="skills" class="section">
         <div class="container">
-            <h2>Skills and Tools</h2>
+            <h2 class="flow-item">Skills and Tools</h2>
             <div class="skills-table">
                 <!-- Column 1: Excel -->
-                <div class="skill-column">
-                    <div class="skill-header">
-                     <li><i class="fa-solid fa-file-excel" style="color: #217346;"></i>
-                    <h3 style="margin: 0;">Excel</h3>
+                <div class="skill-column flow-item">
+                    <div class="skill-header" style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-file-excel" style="color: #217346;"></i>
+                        <h3 style="margin: 0;">Excel</h3>
                     </div>
                     <ul class="skill-list">
                         <li>Cleaning Data</li>
@@ -155,33 +206,25 @@
                         <li>Power Query</li>
                     </ul>
                 </div>
+
                 <!-- Column 2: Others -->
-                <div class="skill-column">
+                <div class="skill-column flow-item">
                     <div class="skill-header">
                         <h3>Others</h3>
                     </div>
                     <ul class="skill-list">
-                    <!-- Google Sheets -->
-                    <li><i class="fa-solid fa-file-csv" style="color: #0F9D58;"></i> Google Sheets</li>
-                
-                    <!-- Tableau & Visualisasi -->
-                    <li><i class="fa-solid fa-chart-pie" style="color: #E97627;"></i> Tableau</li>
-                
-                    <!-- Google Colab & Pemrograman -->
-                    <li><i class="fa-solid fa-code" style="color: #F9AB00;"></i> Google Colab</li>
-                
-                    <!-- Minitab (Statistik) -->
-                    <li><i class="fa-solid fa-square-root-variable" style="color: #005A9C;"></i> Minitab</li>
-                
-                    <!-- Project Management (ProjectLibre) -->
-                    <li><i class="fa-solid fa-diagram-project" style="color: #4A90E2;"></i> ProjectLibre</li>
-                
-                    <!-- Kolaborasi & Diagram (Miro & BPMN.io) -->
-                    <li><i class="fa-solid fa-pen-to-square" style="color: #FFD02F;"></i> Miro</li>
-                    <li><i class="fa-solid fa-sitemap" style="color: #D32F2F;"></i> BPMN.io</li>
-                      </ul>
+                        <li><i class="fa-solid fa-file-csv" style="color: #0F9D58;"></i> Google Sheets</li>
+                        <li><i class="fa-solid fa-chart-pie" style="color: #E97627;"></i> Tableau</li>
+                        <li><i class="fa-solid fa-code" style="color: #F9AB00;"></i> Google Colab</li>
+                        <li><i class="fa-solid fa-square-root-variable" style="color: #005A9C;"></i> Minitab</li>
+                        <li><i class="fa-solid fa-diagram-project" style="color: #4A90E2;"></i> ProjectLibre</li>
+                        <li><i class="fa-solid fa-pen-to-square" style="color: #FFD02F;"></i> Miro</li>
+                        <li><i class="fa-solid fa-sitemap" style="color: #D32F2F;"></i> BPMN.io</li>
+                    </ul>
                 </div>
-        </section>
+            </div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
     <footer>
@@ -190,6 +233,32 @@
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section.section');
+
+            if (!('IntersectionObserver' in window)) {
+                sections.forEach(sec => sec.classList.add('is-visible'));
+                return;
+            }
+
+            const sectionObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Hapus unobserve jika ingin animasi hanya berjalan sekali saat muncul
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px 0px -10% 0px',
+                threshold: 0.15
+            });
+
+            sections.forEach(section => sectionObserver.observe(section));
+        });
+    </script>
     <script src="assets/js/main.js"></script>
 </body>
 </html>
