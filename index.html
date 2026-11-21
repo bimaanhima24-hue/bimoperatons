@@ -17,29 +17,35 @@
     <style>
         html {
             scroll-behavior: smooth;
-            scroll-snap-type: y proximity;
+            scroll-snap-type: y mandatory;
+            overflow-x: hidden;
         }
 
         body {
             overflow-x: hidden;
+            margin: 0;
         }
 
-        /* Layout tiap slide: About, Education, Projects, Skills */
+        /* Setiap section menjadi 1 slide penuh */
         .slide-section {
-            min-height: 100vh;
+            height: 100vh;
             width: 100%;
             scroll-snap-align: start;
+            scroll-snap-stop: always;
+            overflow-y: auto;
+            overflow-x: hidden;
             display: flex;
             align-items: center;
-            padding: 3.5rem 0;
+            padding: 3rem 0;
             position: relative;
+            box-sizing: border-box;
         }
 
         .slide-section > .container {
             width: 100%;
+            margin: auto;
         }
 
-        /* Penanda kecil nama slide di atas judul */
         .slide-label {
             display: inline-block;
             font-size: 0.78rem;
@@ -50,11 +56,11 @@
             margin-bottom: 0.4rem;
         }
 
-        /* Foto proporsional (framing persegi panjang rapi) */
+        /* Foto persegi panjang proporsional */
         .profile-photo,
         .education-photo {
             width: 100%;
-            max-width: 260px;
+            max-width: 240px;
             height: auto;
             border-radius: 8px;
             object-fit: cover;
@@ -65,7 +71,7 @@
         @keyframes slideFlowIn {
             from {
                 opacity: 0;
-                transform: translateY(32px);
+                transform: translateY(28px);
             }
             to {
                 opacity: 1;
@@ -78,22 +84,22 @@
         }
 
         .slide-section.is-active .flow-item {
-            animation: slideFlowIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation: slideFlowIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
 
         .slide-section.is-active .flow-item:nth-child(1) { animation-delay: 0.05s; }
-        .slide-section.is-active .flow-item:nth-child(2) { animation-delay: 0.18s; }
-        .slide-section.is-active .flow-item:nth-child(3) { animation-delay: 0.30s; }
+        .slide-section.is-active .flow-item:nth-child(2) { animation-delay: 0.16s; }
+        .slide-section.is-active .flow-item:nth-child(3) { animation-delay: 0.28s; }
 
-        .projects-grid .project-card.flow-item:nth-child(1) { animation-delay: 0.12s; }
-        .projects-grid .project-card.flow-item:nth-child(2) { animation-delay: 0.22s; }
-        .projects-grid .project-card.flow-item:nth-child(3) { animation-delay: 0.32s; }
-        .projects-grid .project-card.flow-item:nth-child(4) { animation-delay: 0.42s; }
+        .projects-grid .project-card.flow-item:nth-child(1) { animation-delay: 0.1s; }
+        .projects-grid .project-card.flow-item:nth-child(2) { animation-delay: 0.2s; }
+        .projects-grid .project-card.flow-item:nth-child(3) { animation-delay: 0.3s; }
+        .projects-grid .project-card.flow-item:nth-child(4) { animation-delay: 0.4s; }
 
-        .skills-table .skill-column.flow-item:nth-child(1) { animation-delay: 0.14s; }
-        .skills-table .skill-column.flow-item:nth-child(2) { animation-delay: 0.26s; }
+        .skills-table .skill-column.flow-item:nth-child(1) { animation-delay: 0.12s; }
+        .skills-table .skill-column.flow-item:nth-child(2) { animation-delay: 0.24s; }
 
-        /* Navigasi titik antar slide di sisi kanan layar */
+        /* Indikator titik antar slide */
         .slide-dots {
             position: fixed;
             right: 18px;
@@ -122,10 +128,12 @@
 
         @media (max-width: 768px) {
             html {
-                scroll-snap-type: none;
+                scroll-snap-type: y proximity;
             }
             .slide-section {
-                min-height: auto;
+                height: auto;
+                min-height: 100vh;
+                overflow-y: visible;
                 padding: 2.5rem 0;
             }
             .slide-dots {
@@ -154,7 +162,7 @@
             <p>Data Analyst</p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/bima-kaizen" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="Bima-resume.pdf" download title="Download CV"><i class="fas fa-file-arrow-down"></i></a>
+                <a href="https://bimaanhima24-hue.github.io/bimoperatons/Bima-resume.pdf" download title="Download CV"><i class="fas fa-file-arrow-down"></i></a>
             </div>
         </div>
     </header>
