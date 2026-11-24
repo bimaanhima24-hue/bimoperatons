@@ -1,1 +1,375 @@
-98bf6dcf36f354ffe2c4ef2a7a38e736ae264700
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bima | Data Analysis Portfolio</title>
+    <link rel="icon" type="image/png" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" href="favicon-32x32.png">
+    <!-- Google Fonts for Elegant Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Your Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-snap-type: y mandatory;
+            overflow-x: hidden;
+        }
+
+        body {
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        /* Setiap section menjadi 1 slide penuh */
+        .slide-section {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+            overflow-y: auto;
+            overflow-x: hidden;
+            display: flex;
+            align-items: center;
+            padding: 3rem 0;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .slide-section > .container {
+            width: 100%;
+            margin: auto;
+        }
+
+        .slide-label {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            opacity: 0.65;
+            margin-bottom: 0.4rem;
+        }
+
+        /* Foto persegi panjang proporsional */
+        .profile-photo,
+        .education-photo {
+            width: 100%;
+            max-width: 240px;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Animasi flow per slide */
+        @keyframes slideFlowIn {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .flow-item {
+            opacity: 0;
+        }
+
+        .slide-section.is-active .flow-item {
+            animation: slideFlowIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .slide-section.is-active .flow-item:nth-child(1) { animation-delay: 0.05s; }
+        .slide-section.is-active .flow-item:nth-child(2) { animation-delay: 0.16s; }
+        .slide-section.is-active .flow-item:nth-child(3) { animation-delay: 0.28s; }
+
+        .projects-grid .project-card.flow-item:nth-child(1) { animation-delay: 0.1s; }
+        .projects-grid .project-card.flow-item:nth-child(2) { animation-delay: 0.2s; }
+        .projects-grid .project-card.flow-item:nth-child(3) { animation-delay: 0.3s; }
+        .projects-grid .project-card.flow-item:nth-child(4) { animation-delay: 0.4s; }
+
+        .skills-table .skill-column.flow-item:nth-child(1) { animation-delay: 0.12s; }
+        .skills-table .skill-column.flow-item:nth-child(2) { animation-delay: 0.24s; }
+
+        /* Indikator titik antar slide */
+        .slide-dots {
+            position: fixed;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 99;
+        }
+
+        .slide-dots a {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1.5px solid currentColor;
+            opacity: 0.35;
+            transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
+        }
+
+        .slide-dots a.active {
+            opacity: 1;
+            transform: scale(1.3);
+            background-color: currentColor;
+        }
+
+        @media (max-width: 768px) {
+            html {
+                scroll-snap-type: y proximity;
+            }
+            .slide-section {
+                height: auto;
+                min-height: 100vh;
+                overflow-y: visible;
+                padding: 2.5rem 0;
+            }
+            .slide-dots {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+                scroll-snap-type: none;
+            }
+            .flow-item {
+                opacity: 1;
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER SECTION -->
+    <header>
+        <div class="container">
+            <h1>Bima</h1>
+            <p>Data Analyst</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/bima-kaizen" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://bimaanhima24-hue.github.io/bimoperatons/Bima-resume.pdf" download title="Download CV"><i class="fas fa-file-arrow-down"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="https://bimaanhima24-hue.github.io/bimoperatons/#about">About</a></li>
+                <li><a href="https://bimaanhima24-hue.github.io/bimoperatons/#education">Education</a></li>
+                <li><a href="https://bimaanhima24-hue.github.io/bimoperatons/#projects">Projects</a></li>
+                <li><a href="https://bimaanhima24-hue.github.io/bimoperatons/#skills">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- INDIKATOR SLIDE -->
+    <aside class="slide-dots" aria-label="Slide navigation">
+        <a href="https://bimaanhima24-hue.github.io/bimoperatons/#about" data-target="about" title="Slide About"></a>
+        <a href="https://bimaanhima24-hue.github.io/bimoperatons/#education" data-target="education" title="Slide Education"></a>
+        <a href="https://bimaanhima24-hue.github.io/bimoperatons/#projects" data-target="projects" title="Slide Projects"></a>
+        <a href="https://bimaanhima24-hue.github.io/bimoperatons/#skills" data-target="skills" title="Slide Skills"></a>
+    </aside>
+
+    <!-- SLIDE 1: ABOUT -->
+    <section id="about" class="section slide-section" data-slide="About">
+        <div class="container">
+            <span class="slide-label flow-item">Slide 01 · About</span>
+            <h2 class="flow-item">About Me</h2>
+            <div class="about-content flow-item">
+                <img src="pas foto 3x4,.jpg" alt="Bima" class="profile-photo">
+                <div class="about-text">
+                    <p>Seorang fresh graduate di bidang Operation Management. Terlibat dalam beberapa proyek penelitian, baik itu penelitian kuliah luar kampus maupun penelitian dosen tingkat universitas untuk mengembangkan keterampilan dalam mengolah data dan statistik. Memiliki pemahaman tentang data cleaning, data analysis dan data visualization.</p>
+                    <p>Saat ini saya mencari kesempatan untuk mengembangkan kemampuan saya dalam pengolahan data. Portofolio ini menampilkan project yang pernah saya lakukan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 2: EDUCATION -->
+    <section id="education" class="section slide-section" data-slide="Education">
+        <div class="container">
+            <span class="slide-label flow-item">Slide 02 · Education</span>
+            <h2 class="flow-item">Education</h2>
+            <div class="about-content flow-item">
+                <img src="foto wisuda.jpg" alt="Foto wisuda" class="education-photo">
+                <div class="about-text">
+                    <p>Berkuliah di Program Studi Manajemen, Universitas Bangka Belitung selama 3 tahun 11 bulan, dengan IPK 3,66.</p>
+                    <p>Aktif di dua organisasi selama kampus, yaitu Himpunan Mahasiswa Manajemen (HIMAMA) dan Komunitas Photografer UBB (KOPER UBB).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 3: PROJECTS -->
+    <section id="projects" class="section slide-section" data-slide="Projects">
+        <div class="container">
+            <span class="slide-label flow-item">Slide 03 · Projects</span>
+            <h2 class="flow-item">My Projects</h2>
+            <div class="projects-grid">
+
+                <!-- KLK RISET LADA PUTIH-->
+                <div class="project-card flow-item">
+                    <img src="klk lada putih" alt="KLK RISET LADA PUTIH Preview">
+                    <div class="project-card-content">
+                        <h3>KLK RISET LADA PUTIH</h3>
+                        <p>Analisis Sensitivitas Terhadap Perubahan Harga Dan Biaya Pada Usahatani Lada Putih Di Namang, Bangka Tengah. Analisis ini terdiri dari beberapa skenario yang mungkin akan dihadapi oleh petani lada putih</p>
+                        <div class="project-buttons">
+                            <a href="https://docs.google.com/spreadsheets/d/1F0fiRuvx05Qf3bui-uvv8ATIbLAutoaZ/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" class="btn btn-secondary">View Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tugas Akhir -->
+                <div class="project-card flow-item">
+                    <img src="ss tugas akhir.png" alt="Tugas Akhir Preview">
+                    <div class="project-card-content">
+                        <h3>Tugas Akhir</h3>
+                        <p>Analisis Kebutuhan Petugas pada Layanan Instalasi farmasi Pasien Rawat Jalan Puskesmas Sungailiat. Analisis ini bertujuan untuk menghitung berapa jumlah kebutuhan petugas farmasi yang optimal.</p>
+                        <div class="project-buttons">
+                            <a href="https://docs.google.com/spreadsheets/d/1ugrTBzDkcXZ1THFmb-n8Q9xleXE4R2Zc/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" class="btn btn-secondary">View Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Latihan Data Analyst: Business Analyst-->
+                <div class="project-card flow-item">
+                    <img src="ssets/images/aproject-placeholder-3.jpg" alt="Project Three Preview">
+                    <div class="project-card-content">
+                        <h3>Latihan Data Analyst</h3>
+                        <p>Latihan ini berupa praktek penggunaan tools excel dari ilmu yang didapatkan dari webinar data analyst</p>
+                        <div class="project-buttons">
+                            <a href="https://bimaanhima24-hue.github.io/bimoperatons/[YOUR_GITHUB_PROJECT_URL]" target="_blank" class="btn">Documentation</a>
+                            <a href="https://bimaanhima24-hue.github.io/bimoperatons/[YOUR_LIVE_DASHBOARD_URL]" target="_blank" class="btn btn-secondary">View Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Latihan Dashbord -->
+                <div class="project-card flow-item">
+                    <img src="ss dashbord.png" alt="Latihan Dashbord Preview">
+                    <div class="project-card-content">
+                        <h3>Latihan Membuat Dashbord</h3>
+                        <p>Pembuatan dashbord excel ini bertujuan untuk mengembangkan keterampilan penggunaan excel di level yang lebih baik.</p>
+                        <div class="project-buttons">
+                            <a href="https://docs.google.com/spreadsheets/d/1NyKc-b3sqWgvtmwwntm2XqWV183QDAZY/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" class="btn btn-secondary">View Dashboard</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SLIDE 4: SKILLS -->
+    <section id="skills" class="section slide-section" data-slide="Skills">
+        <div class="container">
+            <span class="slide-label flow-item">Slide 04 · Skills</span>
+            <h2 class="flow-item">Skills and Tools</h2>
+            <div class="skills-table">
+                <!-- Column 1: Excel -->
+                <div class="skill-column flow-item">
+                    <div class="skill-header" style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fa-solid fa-file-excel" style="color: #217346;"></i>
+                        <h3 style="margin: 0;">Excel</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li>Cleaning Data</li>
+                        <li>Power Pivot</li>
+                        <li>Dashboard Excel</li>
+                        <li>Power Query</li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Others -->
+                <div class="skill-column flow-item">
+                    <div class="skill-header">
+                        <h3>Others</h3>
+                    </div>
+                    <ul class="skill-list">
+                        <li><i class="fa-solid fa-file-csv" style="color: #0F9D58;"></i> Google Sheets</li>
+                        <li><i class="fa-solid fa-chart-pie" style="color: #E97627;"></i> Tableau</li>
+                        <li><i class="fa-solid fa-code" style="color: #F9AB00;"></i> Google Colab</li>
+                        <li><i class="fa-solid fa-square-root-variable" style="color: #005A9C;"></i> Minitab</li>
+                        <li><i class="fa-solid fa-diagram-project" style="color: #4A90E2;"></i> ProjectLibre</li>
+                        <li><i class="fa-solid fa-pen-to-square" style="color: #FFD02F;"></i> Miro</li>
+                        <li><i class="fa-solid fa-sitemap" style="color: #D32F2F;"></i> BPMN.io</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Bima. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const slides = document.querySelectorAll('.slide-section');
+            const dots = document.querySelectorAll('.slide-dots a');
+            if (!slides.length) return;
+
+            function setActiveDot(id) {
+                dots.forEach((dot) => {
+                    dot.classList.toggle('active', dot.dataset.target === id);
+                });
+            }
+
+            function updateSlides() {
+                const triggerPoint = window.innerHeight * 0.85;
+                let currentId = slides[0].id;
+
+                slides.forEach((slide) => {
+                    const rect = slide.getBoundingClientRect();
+                    if (rect.top < triggerPoint) {
+                        slide.classList.add('is-active');
+                    }
+                    if (rect.top <= window.innerHeight * 0.45 && rect.bottom >= window.innerHeight * 0.2) {
+                        currentId = slide.id;
+                    }
+                });
+
+                setActiveDot(currentId);
+            }
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-active');
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                slides.forEach((slide) => observer.observe(slide));
+            }
+
+            window.addEventListener('scroll', updateSlides, { passive: true });
+            window.addEventListener('resize', updateSlides, { passive: true });
+            window.addEventListener('load', updateSlides);
+            updateSlides();
+        })();
+    </script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
