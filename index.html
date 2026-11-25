@@ -847,30 +847,38 @@
 
 
   <!-- JAVASCRIPT -->
-  <script>
-  const sections = document.querySelectorAll("section.slide");
-  const navLinks = document.querySelectorAll("nav a"); // Sesuaikan selector jika link menu memakai class khusus, misal ".nav-link"
+ <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll('a[href^="#"]');
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute("id");
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href") === `#${id}`) {
-              link.classList.add("active");
-            }
-          });
-        }
-      });
-    },
-    {
-      threshold: 0.3 // Aktif saat minimal 30% bagian section terlihat di layar
-    }
-  );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute("id");
 
-  sections.forEach((section) => observer.observe(section));
+            navLinks.forEach((link) => {
+              // Abaikan logo PORTFOLIO. yang mungkin juga memakai href="#about"
+              if (link.textContent.trim().toUpperCase().includes("PORTFOLIO")) return;
+
+              link.classList.remove("active");
+              if (link.getAttribute("href") === `#${id}`) {
+                link.classList.add("active");
+              }
+            });
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-20% 0px -60% 0px", // Mendeteksi section yang berada di area tengah-atas layar
+        threshold: 0
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  });
 </script>
 
 </body>
