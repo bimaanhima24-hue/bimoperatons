@@ -848,48 +848,30 @@
 
   <!-- JAVASCRIPT -->
   <script>
+  const sections = document.querySelectorAll("section.slide");
+  const navLinks = document.querySelectorAll("nav a"); // Sesuaikan selector jika link menu memakai class khusus, misal ".nav-link"
 
-    const sections = document.querySelectorAll('.slide');
-
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    const counter = document.getElementById('current-slide');
-
-    const observer = new IntersectionObserver((entries) => {
-
-      entries.forEach(entry => {
-
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-
-          const index = [...sections].indexOf(entry.target);
-
-          navLinks.forEach(link => {
-
-            link.classList.toggle(
-              'active',
-              link.getAttribute('href') === '#' + entry.target.id
-            );
-
+          const id = entry.target.getAttribute("id");
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${id}`) {
+              link.classList.add("active");
+            }
           });
-
-          counter.textContent = String(index + 1).padStart(2, '0');
-
         }
-
       });
+    },
+    {
+      threshold: 0.3 // Aktif saat minimal 30% bagian section terlihat di layar
+    }
+  );
 
-    }, {
-      threshold: 0.55
-    });
-
-    sections.forEach(section => {
-      observer.observe(section);
-    });
-
-    document.getElementById('year').textContent =
-      new Date().getFullYear();
-
-  </script>
+  sections.forEach((section) => observer.observe(section));
+</script>
 
 </body>
 </html>
