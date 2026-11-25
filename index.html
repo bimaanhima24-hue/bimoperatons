@@ -1,375 +1,901 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bima | Data Analysis Portfolio</title>
-    <link rel="icon" type="image/png" href="favicon-32x32.png">
-    <link rel="apple-touch-icon" href="favicon-32x32.png">
-    <!-- Google Fonts for Elegant Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <!-- Your Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <style>
-        html {
-            scroll-behavior: smooth;
-            scroll-snap-type: y mandatory;
-            overflow-x: hidden;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio | Your Name</title>
 
-        body {
-            overflow-x: hidden;
-            margin: 0;
-        }
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
-        /* Setiap section menjadi 1 slide penuh */
-        .slide-section {
-            height: 100vh;
-            width: 100%;
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-            overflow-y: auto;
-            overflow-x: hidden;
-            display: flex;
-            align-items: center;
-            padding: 3rem 0;
-            position: relative;
-            box-sizing: border-box;
-        }
+  <style>
+    :root {
+      --bg: #f5f3ee;
+      --paper: #fffefa;
+      --navy: #172b3a;
+      --muted: #687782;
+      --gold: #d5a83f;
+      --line: #e7e2d8;
+    }
 
-        .slide-section > .container {
-            width: 100%;
-            margin: auto;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .slide-label {
-            display: inline-block;
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            opacity: 0.65;
-            margin-bottom: 0.4rem;
-        }
+    html {
+      scroll-behavior: smooth;
+      scroll-snap-type: y mandatory;
+    }
 
-        /* Foto persegi panjang proporsional */
-        .profile-photo,
-        .education-photo {
-            width: 100%;
-            max-width: 260px;
-            height: auto;
-            border-radius: 8px;
-            object-fit: cover;
-            display: block;
-        }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--navy);
+      background: var(--bg);
+    }
 
-        /* Animasi flow per slide */
-        @keyframes slideFlowIn {
-            from {
-                opacity: 0;
-                transform: translateY(28px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-        .flow-item {
-            opacity: 0;
-        }
+    /* NAVIGATION */
 
-        .slide-section.is-active .flow-item {
-            animation: slideFlowIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,254,250,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
 
-        .slide-section.is-active .flow-item:nth-child(1) { animation-delay: 0.05s; }
-        .slide-section.is-active .flow-item:nth-child(2) { animation-delay: 0.16s; }
-        .slide-section.is-active .flow-item:nth-child(3) { animation-delay: 0.28s; }
+    .logo {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
 
-        .projects-grid .project-card.flow-item:nth-child(1) { animation-delay: 0.1s; }
-        .projects-grid .project-card.flow-item:nth-child(2) { animation-delay: 0.2s; }
-        .projects-grid .project-card.flow-item:nth-child(3) { animation-delay: 0.3s; }
-        .projects-grid .project-card.flow-item:nth-child(4) { animation-delay: 0.4s; }
+    .logo span {
+      color: var(--gold);
+    }
 
-        .skills-table .skill-column.flow-item:nth-child(1) { animation-delay: 0.12s; }
-        .skills-table .skill-column.flow-item:nth-child(2) { animation-delay: 0.24s; }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
 
-        /* Indikator titik antar slide */
-        .slide-dots {
-            position: fixed;
-            right: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 99;
-        }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+      transition: .3s;
+    }
 
-        .slide-dots a {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            border: 1.5px solid currentColor;
-            opacity: 0.35;
-            transition: transform 0.25s ease, opacity 0.25s ease, background-color 0.25s ease;
-        }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--navy);
+    }
 
-        .slide-dots a.active {
-            opacity: 1;
-            transform: scale(1.3);
-            background-color: currentColor;
-        }
+    .nav-links a.active {
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 6px;
+    }
 
-        @media (max-width: 768px) {
-            html {
-                scroll-snap-type: y proximity;
-            }
-            .slide-section {
-                height: auto;
-                min-height: 100vh;
-                overflow-y: visible;
-                padding: 2.5rem 0;
-            }
-            .slide-dots {
-                display: none;
-            }
-        }
+    /* GENERAL SECTION */
 
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-                scroll-snap-type: none;
-            }
-            .flow-item {
-                opacity: 1;
-                animation: none !important;
-            }
-        }
-    </style>
+    .slide {
+      min-height: 100vh;
+      padding: 120px 9% 70px;
+      display: flex;
+      align-items: center;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    h1 {
+      font-size: clamp(48px, 7vw, 90px);
+      line-height: 1.05;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      font-size: clamp(38px, 5vw, 60px);
+      margin-bottom: 20px;
+    }
+
+    .gold {
+      color: var(--gold);
+    }
+
+    .description {
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 15px;
+      max-width: 620px;
+    }
+
+    /* ABOUT ME */
+
+    #about {
+      background: var(--bg);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr .8fr;
+      align-items: center;
+      gap: 80px;
+    }
+
+    .profile {
+      width: 100%;
+      max-width: 310px;
+      aspect-ratio: 4 / 5;
+      background: #e8e2d6;
+      border: 10px solid var(--paper);
+      box-shadow: 0 15px 40px rgba(0,0,0,.08);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .profile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .profile-placeholder {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: var(--muted);
+      padding: 20px;
+      font-size: 13px;
+    }
+
+    .tags {
+      margin-top: 22px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 9px 15px;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      color: var(--muted);
+      font-size: 12px;
+      margin: 4px;
+    }
+
+    .button {
+      display: inline-block;
+      background: var(--navy);
+      color: white;
+      padding: 14px 23px;
+      margin-top: 28px;
+      font-size: 13px;
+      border-radius: 4px;
+      transition: .3s;
+    }
+
+    .button:hover {
+      background: #29475b;
+      transform: translateY(-3px);
+    }
+
+    .button-outline {
+      background: transparent;
+      color: var(--navy);
+      border: 1px solid var(--line);
+      margin-left: 8px;
+    }
+
+    /* EDUCATION */
+
+    #education {
+      background: var(--paper);
+    }
+
+    .education-layout {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+    }
+
+    .timeline {
+      border-left: 1px solid var(--line);
+      margin-top: 15px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 0 0 35px 30px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .date {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .timeline-item h3 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* PROJECTS */
+
+    #projects {
+      background: #eef0ed;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 35px;
+    }
+
+    .project-card {
+      background: var(--paper);
+      padding: 30px;
+      border: 1px solid var(--line);
+      transition: .3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.06);
+    }
+
+    .project-number {
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .project-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
+      margin: 18px 0 12px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .project-tools {
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .project-link {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 12px;
+      font-weight: 700;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 4px;
+    }
+
+    /* SKILLS */
+
+    #skills {
+      background: var(--bg);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 35px;
+    }
+
+    .skill-card {
+      background: var(--paper);
+      padding: 30px;
+      border: 1px solid var(--line);
+    }
+
+    .skill-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      margin-bottom: 22px;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-list span {
+      background: #f2f0e9;
+      padding: 10px 14px;
+      font-size: 12px;
+      border-radius: 3px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 25px;
+      text-align: center;
+      background: var(--paper);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* SLIDE COUNTER */
+
+    .slide-counter {
+      position: fixed;
+      right: 25px;
+      bottom: 25px;
+      z-index: 50;
+      color: var(--muted);
+      font-size: 12px;
+      writing-mode: vertical-rl;
+    }
+
+    .slide-counter span {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width: 768px) {
+      .navbar {
+        padding: 15px 5%;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .nav-links a {
+        font-size: 11px;
+      }
+
+      .slide {
+        padding: 145px 7% 65px;
+      }
+
+      .hero,
+      .education-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .profile {
+        max-width: 210px;
+      }
+
+      .project-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .button-outline {
+        margin-left: 0;
+      }
+
+      .slide-counter {
+        display: none;
+      }
+    }
+
+    @media(prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- HEADER SECTION -->
-    <header>
-        <div class="container">
-            <h1>Bima</h1>
-            <p>Data Analyst</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/bima-kaizen" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                <a href="Bima-resume.pdf" download title="Download CV"><i class="fas fa-file-arrow-down"></i></a>
-            </div>
-        </div>
-    </header>
+  <!-- NAVIGATION -->
+  <header class="navbar">
 
-    <!-- NAVIGATION -->
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-            </ul>
-        </div>
-    </nav>
+    <a href="#about" class="logo">
+      PORTFOLIO<span>.</span>
+    </a>
 
-    <!-- INDIKATOR SLIDE -->
-    <aside class="slide-dots" aria-label="Slide navigation">
-        <a href="#about" data-target="about" title="Slide About"></a>
-        <a href="#education" data-target="education" title="Slide Education"></a>
-        <a href="#projects" data-target="projects" title="Slide Projects"></a>
-        <a href="#skills" data-target="skills" title="Slide Skills"></a>
-    </aside>
+    <ul class="nav-links">
+      <li><a href="#about" class="active">About Me</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
 
-    <!-- SLIDE 1: ABOUT -->
-    <section id="about" class="section slide-section" data-slide="About">
-        <div class="container">
-            <span class="slide-label flow-item">Slide 01 · About</span>
-            <h2 class="flow-item">About Me</h2>
-            <div class="about-content flow-item">
-                <img src="pas foto 3x4,.jpg" alt="Bima" class="profile-photo">
-                <div class="about-text">
-                    <p>Seorang fresh graduate di bidang Operation Management. Terlibat dalam beberapa proyek penelitian, baik itu penelitian kuliah luar kampus maupun penelitian dosen tingkat universitas untuk mengembangkan keterampilan dalam mengolah data dan statistik. Memiliki pemahaman tentang data cleaning, data analysis dan data visualization.</p>
-                    <p>Saat ini saya mencari kesempatan untuk mengembangkan kemampuan saya dalam pengolahan data. Portofolio ini menampilkan project yang pernah saya lakukan.</p>
-                </div>
-            </div>
+  </header>
+
+  <main>
+
+    <!-- SECTION 1: ABOUT ME -->
+    <section class="slide" id="about">
+
+      <div class="container hero">
+
+        <div>
+
+          <div class="eyebrow">
+            Welcome to my portfolio
+          </div>
+
+          <h1>
+            Hello, I'm<br>
+            <span class="gold">Your Name.</span>
+          </h1>
+
+          <p class="description">
+            Saya adalah lulusan Manajemen yang memiliki
+            ketertarikan pada bidang Data Analysis,
+            Business Intelligence, dan Operations Management.
+
+            Saya senang menganalisis data, memecahkan masalah,
+            serta mengubah informasi menjadi insight
+            yang bermanfaat untuk pengambilan keputusan.
+          </p>
+
+          <div class="tags">
+            <span class="tag">Fresh Graduate</span>
+            <span class="tag">Data Enthusiast</span>
+            <span class="tag">Open to Work</span>
+          </div>
+
+          <a href="mailto:emailkamu@example.com" class="button">
+            Contact Me ↗
+          </a>
+
+          <a href="https://linkedin.com/" class="button button-outline" target="_blank">
+            LinkedIn ↗
+          </a>
+
         </div>
+
+        <div class="profile">
+
+          <!-- GANTI DENGAN FOTO KAMU -->
+          <div class="profile-placeholder">
+            Tambahkan foto profesional di sini.
+          </div>
+
+          <!-- Contoh:
+          <img src="foto-profil.jpg" alt="Foto profil">
+          -->
+
+        </div>
+
+      </div>
+
     </section>
 
-    <!-- SLIDE 2: EDUCATION -->
-    <section id="education" class="section slide-section" data-slide="Education">
-        <div class="container">
-            <span class="slide-label flow-item">Slide 02 · Education</span>
-            <h2 class="flow-item">Education</h2>
-            <div class="about-content flow-item">
-                <img src="foto wisuda.jpg" alt="Foto wisuda" class="education-photo">
-                <div class="about-text">
-                    <p>Berkuliah di Program Studi Manajemen, Universitas Bangka Belitung selama 3 tahun 11 bulan, dengan IPK 3,66.</p>
-                    <p>Aktif di dua organisasi selama kampus, yaitu Himpunan Mahasiswa Manajemen (HIMAMA) dan Komunitas Photografer UBB (KOPER UBB).</p>
-                </div>
-            </div>
+
+    <!-- SECTION 2: EDUCATION -->
+    <section class="slide" id="education">
+
+      <div class="container education-layout">
+
+        <div>
+
+          <div class="eyebrow">
+            01 / Background
+          </div>
+
+          <h2>
+            Education<br>
+            <span class="gold">& Learning.</span>
+          </h2>
+
+          <p class="description">
+            Perjalanan pendidikan yang membentuk
+            pengetahuan, kemampuan analitis,
+            dan pengalaman akademik saya.
+          </p>
+
         </div>
+
+        <div class="timeline">
+
+          <div class="timeline-item">
+
+            <div class="date">
+              20XX — 20XX
+            </div>
+
+            <h3>Nama Universitas</h3>
+
+            <p>
+              S1 Manajemen<br>
+              Fakultas Ekonomi dan Bisnis<br>
+              IPK: X.XX / 4.00
+            </p>
+
+          </div>
+
+          <div class="timeline-item">
+
+            <div class="date">
+              20XX — 20XX
+            </div>
+
+            <h3>Nama Sekolah</h3>
+
+            <p>
+              Jurusan / Peminatan<br>
+              Kota, Indonesia
+            </p>
+
+          </div>
+
+          <div class="timeline-item">
+
+            <div class="date">
+              CERTIFICATIONS
+            </div>
+
+            <h3>Pelatihan & Sertifikasi</h3>
+
+            <p>
+              Nama pelatihan atau sertifikasi,
+              penyelenggara, dan tahun.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </section>
 
-    <!-- SLIDE 3: PROJECTS -->
-    <section id="projects" class="section slide-section" data-slide="Projects">
-        <div class="container">
-            <span class="slide-label flow-item">Slide 03 · Projects</span>
-            <h2 class="flow-item">My Projects</h2>
-            <div class="projects-grid">
 
-                <!-- KLK RISET LADA PUTIH-->
-                <div class="project-card flow-item">
-                    <img src="klk lada putih" alt="KLK RISET LADA PUTIH Preview">
-                    <div class="project-card-content">
-                        <h3>KLK RISET LADA PUTIH</h3>
-                        <p>Analisis Sensitivitas Terhadap Perubahan Harga Dan Biaya Pada Usahatani Lada Putih Di Namang, Bangka Tengah. Analisis ini terdiri dari beberapa skenario yang mungkin akan dihadapi oleh petani lada putih</p>
-                        <div class="project-buttons">
-                            <a href="https://docs.google.com/spreadsheets/d/1F0fiRuvx05Qf3bui-uvv8ATIbLAutoaZ/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                        </div>
-                    </div>
-                </div>
+    <!-- SECTION 3: PROJECTS -->
+    <section class="slide" id="projects">
 
-                <!-- Tugas Akhir -->
-                <div class="project-card flow-item">
-                    <img src="ss tugas akhir.png" alt="Tugas Akhir Preview">
-                    <div class="project-card-content">
-                        <h3>Tugas Akhir</h3>
-                        <p>Analisis Kebutuhan Petugas pada Layanan Instalasi farmasi Pasien Rawat Jalan Puskesmas Sungailiat. Analisis ini bertujuan untuk menghitung berapa jumlah kebutuhan petugas farmasi yang optimal.</p>
-                        <div class="project-buttons">
-                            <a href="https://docs.google.com/spreadsheets/d/1ugrTBzDkcXZ1THFmb-n8Q9xleXE4R2Zc/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                        </div>
-                    </div>
-                </div>
+      <div class="container">
 
-                <!-- Latihan Data Analyst: Business Analyst-->
-                <div class="project-card flow-item">
-                    <img src="ssets/images/aproject-placeholder-3.jpg" alt="Project Three Preview">
-                    <div class="project-card-content">
-                        <h3>Latihan Data Analyst</h3>
-                        <p>Latihan ini berupa praktek penggunaan tools excel dari ilmu yang didapatkan dari webinar data analyst</p>
-                        <div class="project-buttons">
-                            <a href="[YOUR_GITHUB_PROJECT_URL]" target="_blank" class="btn">Documentation</a>
-                            <a href="[YOUR_LIVE_DASHBOARD_URL]" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Latihan Dashbord -->
-                <div class="project-card flow-item">
-                    <img src="ss dashbord.png" alt="Latihan Dashbord Preview">
-                    <div class="project-card-content">
-                        <h3>Latihan Membuat Dashbord</h3>
-                        <p>Pembuatan dashbord excel ini bertujuan untuk mengembangkan keterampilan penggunaan excel di level yang lebih baik.</p>
-                        <div class="project-buttons">
-                            <a href="https://docs.google.com/spreadsheets/d/1NyKc-b3sqWgvtmwwntm2XqWV183QDAZY/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" class="btn btn-secondary">View Dashboard</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="eyebrow">
+          02 / Selected Work
         </div>
+
+        <h2>
+          Projects & <span class="gold">Experience.</span>
+        </h2>
+
+        <p class="description">
+          Beberapa proyek pilihan yang menggambarkan
+          kemampuan analisis, pemecahan masalah,
+          dan penerapan pengetahuan saya.
+        </p>
+
+        <div class="project-grid">
+
+          <div class="project-card">
+
+            <div class="project-number">
+              PROJECT 01
+            </div>
+
+            <h3>
+              Pharmacy Staffing Simulation
+            </h3>
+
+            <p>
+              Analisis kebutuhan petugas pada layanan
+              Instalasi Farmasi Rawat Jalan menggunakan
+              metode Discrete Event Simulation untuk
+              mengevaluasi kapasitas pelayanan.
+            </p>
+
+            <div class="project-tools">
+              DATA ANALYSIS · SIMULATION · OPERATIONS
+            </div>
+
+            <a href="#" class="project-link">
+              View Project ↗
+            </a>
+
+          </div>
+
+
+          <div class="project-card">
+
+            <div class="project-number">
+              PROJECT 02
+            </div>
+
+            <h3>
+              Data Analysis Dashboard
+            </h3>
+
+            <p>
+              Pengolahan dan visualisasi data menggunakan
+              Microsoft Excel untuk menghasilkan dashboard
+              interaktif dan mendukung proses pengambilan
+              keputusan.
+            </p>
+
+            <div class="project-tools">
+              EXCEL · DATA CLEANING · DASHBOARD
+            </div>
+
+            <a href="#" class="project-link">
+              View Project ↗
+            </a>
+
+          </div>
+
+
+          <div class="project-card">
+
+            <div class="project-number">
+              PROJECT 03
+            </div>
+
+            <h3>
+              Business Data Analysis
+            </h3>
+
+            <p>
+              Analisis data bisnis untuk mengidentifikasi
+              pola, mengevaluasi performa, dan menemukan
+              peluang perbaikan.
+            </p>
+
+            <div class="project-tools">
+              BUSINESS ANALYSIS · REPORTING
+            </div>
+
+            <a href="#" class="project-link">
+              View Project ↗
+            </a>
+
+          </div>
+
+
+          <div class="project-card">
+
+            <div class="project-number">
+              EXPERIENCE
+            </div>
+
+            <h3>
+              Organization & Experience
+            </h3>
+
+            <p>
+              Pengalaman organisasi, kepanitiaan,
+              magang, atau aktivitas profesional
+              yang relevan dengan posisi yang dilamar.
+            </p>
+
+            <div class="project-tools">
+              TEAMWORK · LEADERSHIP · COMMUNICATION
+            </div>
+
+            <a href="#" class="project-link">
+              View Experience ↗
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </section>
 
-    <!-- SLIDE 4: SKILLS -->
-    <section id="skills" class="section slide-section" data-slide="Skills">
-        <div class="container">
-            <span class="slide-label flow-item">Slide 04 · Skills</span>
-            <h2 class="flow-item">Skills and Tools</h2>
-            <div class="skills-table">
-                <!-- Column 1: Excel -->
-                <div class="skill-column flow-item">
-                    <div class="skill-header" style="display: flex; align-items: center; gap: 8px;">
-                        <i class="fa-solid fa-file-excel" style="color: #217346;"></i>
-                        <h3 style="margin: 0;">Excel</h3>
-                    </div>
-                    <ul class="skill-list">
-                        <li>Cleaning Data</li>
-                        <li>Power Pivot</li>
-                        <li>Dashboard Excel</li>
-                        <li>Power Query</li>
-                    </ul>
-                </div>
 
-                <!-- Column 2: Others -->
-                <div class="skill-column flow-item">
-                    <div class="skill-header">
-                        <h3>Others</h3>
-                    </div>
-                    <ul class="skill-list">
-                        <li><i class="fa-solid fa-file-csv" style="color: #0F9D58;"></i> Google Sheets</li>
-                        <li><i class="fa-solid fa-chart-pie" style="color: #E97627;"></i> Tableau</li>
-                        <li><i class="fa-solid fa-code" style="color: #F9AB00;"></i> Google Colab</li>
-                        <li><i class="fa-solid fa-square-root-variable" style="color: #005A9C;"></i> Minitab</li>
-                        <li><i class="fa-solid fa-diagram-project" style="color: #4A90E2;"></i> ProjectLibre</li>
-                        <li><i class="fa-solid fa-pen-to-square" style="color: #FFD02F;"></i> Miro</li>
-                        <li><i class="fa-solid fa-sitemap" style="color: #D32F2F;"></i> BPMN.io</li>
-                    </ul>
-                </div>
-            </div>
+    <!-- SECTION 4: SKILLS -->
+    <section class="slide" id="skills">
+
+      <div class="container">
+
+        <div class="eyebrow">
+          03 / What I Bring
         </div>
+
+        <h2>
+          Skills & <span class="gold">Tools.</span>
+        </h2>
+
+        <p class="description">
+          Kemampuan teknis dan nonteknis yang saya
+          kembangkan untuk mendukung pekerjaan
+          secara profesional.
+        </p>
+
+        <div class="skills-grid">
+
+          <div class="skill-card">
+
+            <h3>Technical Skills</h3>
+
+            <div class="skill-list">
+              <span>Data Analysis</span>
+              <span>Data Cleaning</span>
+              <span>Data Visualization</span>
+              <span>Business Analysis</span>
+              <span>Basic Statistics</span>
+              <span>Dashboard Development</span>
+            </div>
+
+          </div>
+
+
+          <div class="skill-card">
+
+            <h3>Tools & Software</h3>
+
+            <div class="skill-list">
+              <span>Microsoft Excel</span>
+              <span>Power BI</span>
+              <span>Google Sheets</span>
+              <span>Microsoft PowerPoint</span>
+              <span>SQL</span>
+              <span>Google AI Studio</span>
+            </div>
+
+          </div>
+
+
+          <div class="skill-card">
+
+            <h3>Soft Skills</h3>
+
+            <div class="skill-list">
+              <span>Analytical Thinking</span>
+              <span>Problem Solving</span>
+              <span>Communication</span>
+              <span>Adaptability</span>
+              <span>Time Management</span>
+              <span>Teamwork</span>
+            </div>
+
+          </div>
+
+
+          <div class="skill-card">
+
+            <h3>Let's Connect</h3>
+
+            <p class="description">
+              Saya terbuka terhadap kesempatan
+              untuk belajar, berkembang, dan
+              memberikan kontribusi profesional.
+            </p>
+
+            <a href="mailto:emailkamu@example.com" class="button">
+              Email Me ↗
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Bima. All rights reserved.</p>
-        </div>
-    </footer>
+  </main>
 
-    <script>
-        (function () {
-            const slides = document.querySelectorAll('.slide-section');
-            const dots = document.querySelectorAll('.slide-dots a');
-            if (!slides.length) return;
 
-            function setActiveDot(id) {
-                dots.forEach((dot) => {
-                    dot.classList.toggle('active', dot.dataset.target === id);
-                });
-            }
+  <!-- SLIDE COUNTER -->
+  <div class="slide-counter">
+    <span id="current-slide">01</span> / 04
+  </div>
 
-            function updateSlides() {
-                const triggerPoint = window.innerHeight * 0.85;
-                let currentId = slides[0].id;
 
-                slides.forEach((slide) => {
-                    const rect = slide.getBoundingClientRect();
-                    if (rect.top < triggerPoint) {
-                        slide.classList.add('is-active');
-                    }
-                    if (rect.top <= window.innerHeight * 0.45 && rect.bottom >= window.innerHeight * 0.2) {
-                        currentId = slide.id;
-                    }
-                });
+  <footer>
+    © <span id="year"></span> Your Name.
+    All Rights Reserved.
+  </footer>
 
-                setActiveDot(currentId);
-            }
 
-            if ('IntersectionObserver' in window) {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-active');
-                        }
-                    });
-                }, { threshold: 0.1 });
+  <!-- JAVASCRIPT -->
+  <script>
 
-                slides.forEach((slide) => observer.observe(slide));
-            }
+    const sections = document.querySelectorAll('.slide');
 
-            window.addEventListener('scroll', updateSlides, { passive: true });
-            window.addEventListener('resize', updateSlides, { passive: true });
-            window.addEventListener('load', updateSlides);
-            updateSlides();
-        })();
-    </script>
-    <script src="assets/js/main.js"></script>
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const counter = document.getElementById('current-slide');
+
+    const observer = new IntersectionObserver((entries) => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+          const index = [...sections].indexOf(entry.target);
+
+          navLinks.forEach(link => {
+
+            link.classList.toggle(
+              'active',
+              link.getAttribute('href') === '#' + entry.target.id
+            );
+
+          });
+
+          counter.textContent = String(index + 1).padStart(2, '0');
+
+        }
+
+      });
+
+    }, {
+      threshold: 0.55
+    });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+
+  </script>
+
 </body>
 </html>
