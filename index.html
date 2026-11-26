@@ -275,14 +275,52 @@
       font-size: 13px;
       line-height: 1.8;
     }
-    .cert-image {
-  width: 100%;
-  max-width: 450px;
-  height: auto;
-  margin-top: 12px;
-  border-radius: 6px;
+   .cert-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 kolom sejajar ke samping */
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.cert-card {
   border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 10px;
+  background-color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cert-thumb {
+  width: 100%;
+  height: 120px; /* Ukuran tinggi dibuat kecil & seragam */
+  object-fit: cover; /* Memastikan gambar tidak gepeng */
+  border-radius: 4px;
   display: block;
+  margin-bottom: 8px;
+}
+
+.cert-card h4 {
+  font-size: 0.9rem;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.cert-card p {
+  font-size: 0.78rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Responsif untuk layar HP */
+@media (max-width: 768px) {
+  .cert-grid {
+    grid-template-columns: repeat(2, 1fr); /* Jadi 2 kolom di layar kecil */
+  }
 }
 
     /* PROJECTS */
@@ -552,12 +590,12 @@
         <div>
 
           <div class="eyebrow">
-            01 / Background
+            01 
           </div>
 
           <h2>
             Education<br>
-            <span class="gold">& Learning.</span>
+            <span class="gold">& Certificate.</span>
           </h2>
 
           <p class="description">
@@ -586,15 +624,29 @@
           </div>
 
                
-           <div class="cert-item">
-  <span class="cert-label">CERTIFICATIONS</span>
-  <h3>Workshop Data Analytics and Modeling for Healthcare</h3>
-  <p>FEB UBB & CARDIFF UNIVERSITY — 2025</p>
-  
-  <img src="ss healtcare worksop.png" alt="Sertifikat Pelatihan" class="cert-image">
-</div>
-      </div>
+          <span class="cert-label">CERTIFICATIONS</span>
 
+<div class="cert-grid">
+  <!-- Sertifikat 1 -->
+  <div class="cert-card">
+    <a href="ss healtcare worksop.png" target="_blank">
+      <img src="ss healtcare worksop.png" alt="Workshop Data Analytics" class="cert-thumb">
+    </a>
+    <h4>Workshop Data Analytics and Modeling for Healthcare</h4>
+    <p>FEB UBB & Cardiff University — 2025</p>
+  </div>
+
+  <!-- Sertifikat 2 -->
+  <div class="cert-card">
+    <a href="assets/sertifikat-2.jpg" target="_blank">
+      <img src="assets/sertifikat-2.jpg" alt="Sertifikat 2" class="cert-thumb">
+    </a>
+    <h4>Judul Pelatihan Kedua</h4>
+    <p>Penyelenggara — Tahun</p>
+  </div>
+
+  <!-- Salin blok .cert-card di atas untuk sertifikat ke-3, ke-4, dan ke-5 -->
+</div>
     </section>
 
 
