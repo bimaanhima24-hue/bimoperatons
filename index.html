@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -10,13 +9,12 @@
 
   <style>
     :root {
-  --bg: #F3F6FA;
-  --paper: #FFFFFF;
-  --navy: #17365D;
-  --muted: #64748B;
-  --gold: #4A90C2;
-  --line: #DCE5EF;
-}
+      --bg: #F3F6FA;
+      --paper: #FFFFFF;
+      --navy: #17365D;
+      --muted: #64748B;
+      --gold: #4A90C2;
+      --line: #DCE5EF;
     }
 
     * {
@@ -46,14 +44,14 @@
     .navbar {
       position: fixed;
       top: 0;
-      left: 4;
+      left: 0;
       width: 100%;
       z-index: 100;
-      padding: 18px 0.20%;
+      padding: 18px 5%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(255,254,250,0.88);
+      background: rgba(255, 254, 250, 0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--line);
     }
@@ -70,15 +68,10 @@
 
     .nav-links {
       display: flex;
-      gap: 20px;
+      gap: 24px;
       list-style: none;
     }
 
-    .nav-links { 
-  display: flex;
-  gap: 24px;
-  margin-right: 60px;
-}
     .nav-links a {
       font-size: 13px;
       color: var(--muted);
@@ -100,7 +93,7 @@
 
     .slide {
       min-height: 100vh;
-      padding: 120px 9% 70px;
+      padding: 110px 7% 70px;
       display: flex;
       align-items: center;
       scroll-snap-align: start;
@@ -176,16 +169,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-    }
-
-    .profile-placeholder {
-      height: 100%;
-      display: grid;
-      place-items: center;
-      text-align: center;
-      color: var(--muted);
-      padding: 20px;
-      font-size: 13px;
+      object-position: center 15%;
+      display: block;
     }
 
     .tags {
@@ -206,9 +191,9 @@
       display: inline-block;
       background: var(--navy);
       color: white;
-      padding: 14px 23px;
-      margin-top: 28px;
+      padding: 13px 22px;
       font-size: 13px;
+      font-weight: 600;
       border-radius: 4px;
       transition: .3s;
     }
@@ -218,11 +203,17 @@
       transform: translateY(-3px);
     }
 
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
     .button-outline {
       background: transparent;
       color: var(--navy);
       border: 1px solid var(--line);
-      margin-left: 8px;
     }
 
     /* EDUCATION */
@@ -233,41 +224,53 @@
 
     .education-layout {
       display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 70px;
+      grid-template-columns: .75fr 1.25fr;
+      gap: 60px;
+      align-items: start;
     }
 
     .timeline {
-      border-left: 1px solid var(--line);
-      margin-top: 15px;
+      border-left: 2px solid var(--line);
+      margin-top: 10px;
+      padding-left: 28px;
     }
 
     .timeline-item {
       position: relative;
-      padding: 0 0 35px 30px;
+      padding-bottom: 32px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
     }
 
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: -6px;
-      top: 4px;
-      width: 10px;
-      height: 10px;
+      left: -35px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background: var(--gold);
+      border: 2px solid var(--paper);
     }
 
-    .date {
+    .timeline-year {
+      display: inline-block;
       color: var(--gold);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 1px;
+      margin-bottom: 6px;
     }
 
-    .timeline-item h3 {
-      margin: 10px 0;
-      font-size: 18px;
+    .timeline-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
     }
 
     .timeline-item p {
@@ -275,53 +278,48 @@
       font-size: 13px;
       line-height: 1.8;
     }
-   .cert-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 kolom sejajar ke samping */
-  gap: 16px;
-  margin-top: 16px;
-}
 
-.cert-card {
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  padding: 10px;
-  background-color: #ffffff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
 
-.cert-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
+    .cert-card {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      background-color: var(--paper);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-.cert-thumb {
-  width: 100%;
-  height: 120px; /* Ukuran tinggi dibuat kecil & seragam */
-  object-fit: cover; /* Memastikan gambar tidak gepeng */
-  border-radius: 4px;
-  display: block;
-  margin-bottom: 8px;
-}
+    .cert-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
 
-.cert-card h4 {
-  font-size: 0.9rem;
-  margin: 0 0 4px 0;
-  line-height: 1.3;
-}
+    .cert-thumb {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+      margin-bottom: 8px;
+    }
 
-.cert-card p {
-  font-size: 0.78rem;
-  color: #64748b;
-  margin: 0;
-}
+    .cert-card h4 {
+      font-size: 0.88rem;
+      margin: 0 0 4px 0;
+      line-height: 1.35;
+      color: var(--navy);
+    }
 
-/* Responsif untuk layar HP */
-@media (max-width: 768px) {
-  .cert-grid {
-    grid-template-columns: repeat(2, 1fr); /* Jadi 2 kolom di layar kecil */
-  }
-}
+    .cert-card p {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin: 0;
+    }
 
     /* PROJECTS */
 
@@ -329,22 +327,22 @@
       background: #eef0ed;
     }
 
- .project-grid {
+    .project-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr)); /* Mencegah kolom meluber karena gambar lebar */
-      gap: 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
       margin-top: 35px;
     }
 
     .project-card {
       background: var(--paper);
-      padding: 30px;
+      padding: 28px;
       border: 1px solid var(--line);
       transition: .3s;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      min-width: 0; /* Wajib ada di dalam CSS Grid */
+      min-width: 0;
     }
 
     .project-card:hover {
@@ -352,53 +350,56 @@
       box-shadow: 0 15px 35px rgba(0,0,0,.06);
     }
 
-    /* Styling khusus untuk gambar di dalam kartu */
     .project-card img {
       width: 100%;
       max-width: 100%;
-      height: 220px; /* Tinggi seragam */
-      object-fit: cover; /* Ubah ke 'contain' jika ingin tabel Excel terlihat utuh semua */
-      object-position: top left; /* Fokus ke pojok kiri atas tabel */
+      height: 210px;
+      object-fit: cover;
+      object-position: top left;
       display: block;
       margin-bottom: 18px;
       border: 1px solid var(--line);
+      border-radius: 4px;
     }
 
     .project-number {
       color: var(--gold);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     .project-card h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 23px;
-      margin: 18px 0 12px;
+      font-size: 22px;
+      margin: 12px 0 14px;
+      color: var(--navy);
+    }
+
+    .project-card-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .project-card p {
       color: var(--muted);
       font-size: 13px;
       line-height: 1.8;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .project-tools {
       color: var(--gold);
       font-size: 11px;
       font-weight: 600;
-      margin-top: auto; /* Membuat posisi tools & link sejajar di bagian bawah kartu */
+      letter-spacing: 0.5px;
+      margin-top: auto;
     }
 
-    .project-link {
-      display: inline-block;
-      margin-top: 18px;
-      font-size: 12px;
-      font-weight: 700;
-      border-bottom: 1px solid var(--gold);
-      padding-bottom: 4px;
-      align-self: flex-start; /* Agar garis bawah link tidak ikut melebar penuh */
+    .project-buttons {
+      margin-top: 16px;
     }
 
     /* SKILLS */
@@ -409,7 +410,7 @@
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 20px;
       margin-top: 35px;
     }
@@ -424,6 +425,10 @@
       font-family: 'Playfair Display', serif;
       font-size: 22px;
       margin-bottom: 22px;
+    }
+
+    .skill-card p {
+      margin-bottom: 20px;
     }
 
     .skill-list {
@@ -447,32 +452,22 @@
       background: var(--paper);
       color: var(--muted);
       font-size: 12px;
-    }
-
-    /* SLIDE COUNTER */
-
-    .slide-counter {
-      position: fixed;
-      right: 25px;
-      bottom: 25px;
-      z-index: 50;
-      color: var(--muted);
-      font-size: 12px;
-      writing-mode: vertical-rl;
-    }
-
-    .slide-counter span {
-      color: var(--gold);
-      font-weight: 700;
+      border-top: 1px solid var(--line);
     }
 
     /* RESPONSIVE */
 
-    @media(max-width: 768px) {
+    @media (max-width: 900px) {
+      .cert-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 768px) {
       .navbar {
         padding: 15px 5%;
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
       }
 
       .nav-links {
@@ -486,7 +481,7 @@
       }
 
       .slide {
-        padding: 145px 7% 65px;
+        padding: 135px 7% 65px;
       }
 
       .hero,
@@ -503,17 +498,9 @@
       .skills-grid {
         grid-template-columns: 1fr;
       }
-
-      .button-outline {
-        margin-left: 0;
-      }
-
-      .slide-counter {
-        display: none;
-      }
     }
 
-    @media(prefers-reduced-motion: reduce) {
+    @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
       }
@@ -525,7 +512,6 @@
 
   <!-- NAVIGATION -->
   <header class="navbar">
-
     <a href="#about" class="logo">
       PORTFOLIO<span>.</span>
     </a>
@@ -536,18 +522,14 @@
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
     </ul>
-
   </header>
 
   <main>
 
     <!-- SECTION 1: ABOUT ME -->
     <section class="slide" id="about">
-
       <div class="container hero">
-
         <div>
-
           <div class="eyebrow">
             Welcome to my portfolio
           </div>
@@ -572,44 +554,30 @@
             <span class="tag">Data Enthusiast</span>
           </div>
 
-          <a href="bimaanhima24@gmail.com" class="button">
-            Contact Me ↗
-          </a>
+          <div class="hero-actions">
+            <a href="mailto:bimaanhima24@gmail.com" class="button">
+              Contact Me ↗
+            </a>
 
-          <a href="https://www.linkedin.com/in/bima-kaizen" class="button button-outline" target="_blank">
-            LinkedIn ↗
-          </a>
-
+            <a href="https://www.linkedin.com/in/bima-kaizen" class="button button-outline" target="_blank" rel="noopener noreferrer">
+              LinkedIn ↗
+            </a>
+          </div>
         </div>
 
         <div class="profile">
-
-          <!-- GANTI DENGAN FOTO KAMU -->
-          <div class="profile-placeholder">
-           <img src="pas foto 3x4,.jpg" alt="Foto profil"> 
-          </div>
-
-          <!-- Contoh:
           <img src="pas foto 3x4,.jpg" alt="Foto profil">
-          -->
-
         </div>
-
       </div>
-
     </section>
-
 
     <!-- SECTION 2: EDUCATION -->
     <section class="slide" id="education">
-
       <div class="container education-layout">
-
         <div>
-
           <h2>
             Education<br>
-            <span class="gold">& Certificate.</span>
+            <span class="gold">&amp; Certificate.</span>
           </h2>
 
           <p class="description">
@@ -617,79 +585,76 @@
             pengetahuan, kemampuan analitis,
             dan pengembangan skill saya.
           </p>
-
         </div>
 
-       <div class="timeline">
-  <!-- Item 1: Pendidikan -->
-  <div class="timeline-item">
-    <span class="timeline-year">2022 — 2026</span>
-    <h3 class="timeline-title">Universitas Bangka Belitung</h3>
-    <p>S1 Manajemen Fakultas Ekonomi dan Bisnis — IPK: 3.66 / 4.00</p>
-  </div>
+        <div class="timeline">
+          <!-- Item 1: Pendidikan -->
+          <div class="timeline-item">
+            <span class="timeline-year">2022 — 2026</span>
+            <h3 class="timeline-title">Universitas Bangka Belitung</h3>
+            <p>S1 Manajemen Fakultas Ekonomi dan Bisnis — IPK: 3.66 / 4.00</p>
+          </div>
 
-  <!-- Item 2: Sertifikat  -->
-  <div class="timeline-item">
-    <h3 class="timeline-title">Certificate of Completion</h3>
-    
-<div class="cert-grid">
-  <!-- Sertifikat 1 -->
-  <div class="cert-card">
-    <a href="ss healtcare worksop.png" target="_blank">
-      <img src="ss healtcare worksop.png" alt="Workshop Data Analytics" class="cert-thumb">
-    </a>
-    <h4>Workshop Data Analytics and Modeling for Healthcare</h4>
-    <p>FEB UBB & Cardiff University — 2025</p>
-  </div>
+          <!-- Item 2: Sertifikat -->
+          <div class="timeline-item">
+            <h3 class="timeline-title">Certificate of Completion</h3>
 
-  <!-- Sertifikat 2 -->
-  <div class="cert-card">
-    <a href="Screenshot business analysist.png" target="_blank">
-      <img src="Screenshot business analysist.png" alt="Sertifikat 2" class="cert-thumb">
-    </a>
-    <h4>Business Analysis & Process Management</h4>
-    <p>Coursera — 2026</p>
-  </div>
+            <div class="cert-grid">
+              <!-- Sertifikat 1 -->
+              <div class="cert-card">
+                <a href="ss healtcare worksop.png" target="_blank" rel="noopener noreferrer">
+                  <img src="ss healtcare worksop.png" alt="Workshop Data Analytics" class="cert-thumb">
+                </a>
+                <h4>Workshop Data Analytics and Modeling for Healthcare</h4>
+                <p>FEB UBB &amp; Cardiff University — 2025</p>
+              </div>
 
-  <!-- Sertifikat 3 -->
-  <div class="cert-card">
-    <a href="Screenshot gantt chart.png" target="_blank">
-      <img src="Screenshot gantt chart.png" alt="Sertifikat 2" class="cert-thumb">
-    </a>
-    <h4>Create Gantt Chart Using Microsoft Excel</h4>
-    <p>Coursera — 2026</p>
-  </div>
+              <!-- Sertifikat 2 -->
+              <div class="cert-card">
+                <a href="Screenshot business analysist.png" target="_blank" rel="noopener noreferrer">
+                  <img src="Screenshot business analysist.png" alt="Business Analysis & Process Management" class="cert-thumb">
+                </a>
+                <h4>Business Analysis &amp; Process Management</h4>
+                <p>Coursera — 2026</p>
+              </div>
 
-  <!-- Sertifikat 4 -->
-  <div class="cert-card">
-    <a href="Screenshot sertif office.png" target="_blank">
-      <img src="Screenshot sertif office.png" alt="Sertifikat 2" class="cert-thumb">
-    </a>
-    <h4>Pelatihan Microsoft Office Dasar</h4>
-    <p>UPA TIK UBB — 2026</p>
-  </div>
+              <!-- Sertifikat 3 -->
+              <div class="cert-card">
+                <a href="Screenshot gantt chart.png" target="_blank" rel="noopener noreferrer">
+                  <img src="Screenshot gantt chart.png" alt="Create Gantt Chart Using Microsoft Excel" class="cert-thumb">
+                </a>
+                <h4>Create Gantt Chart Using Microsoft Excel</h4>
+                <p>Coursera — 2026</p>
+              </div>
 
-  <!-- Sertifikat 5 -->
-  <div class="cert-card">
-    <a href="Screenshot educativa.png" target="_blank">
-      <img src="Screenshot educativa.png" alt="Sertifikat 2" class="cert-thumb">
-    </a>
-    <h4>Webinar Nasional Data Analyst Fundamental</h4>
-    <p>Educativa — 2026</p>
-  </div>
+              <!-- Sertifikat 4 -->
+              <div class="cert-card">
+                <a href="Screenshot sertif office.png" target="_blank" rel="noopener noreferrer">
+                  <img src="Screenshot sertif office.png" alt="Pelatihan Microsoft Office Dasar" class="cert-thumb">
+                </a>
+                <h4>Pelatihan Microsoft Office Dasar</h4>
+                <p>UPA TIK UBB — 2026</p>
+              </div>
 
-</div>
+              <!-- Sertifikat 5 -->
+              <div class="cert-card">
+                <a href="Screenshot educativa.png" target="_blank" rel="noopener noreferrer">
+                  <img src="Screenshot educativa.png" alt="Webinar Nasional Data Analyst Fundamental" class="cert-thumb">
+                </a>
+                <h4>Webinar Nasional Data Analyst Fundamental</h4>
+                <p>Educativa — 2026</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-
-
 
     <!-- SECTION 3: PROJECTS -->
     <section class="slide" id="projects">
-
       <div class="container">
-
         <h2>
-          Projects <span class="gold">
+          Projects <span class="gold">.</span>
         </h2>
 
         <p class="description">
@@ -698,9 +663,8 @@
         </p>
 
         <div class="project-grid">
-
+          <!-- KARTU 1 -->
           <div class="project-card">
-
             <div class="project-number">
               TUGAS AKHIR
             </div>
@@ -708,115 +672,132 @@
             <h3>
               Analisis Kebutuhan Petugas Farmasi
             </h3>
-            <img src="ss tugas akhir.png" alt=" Tugas Akhir Preview">
-                    <div class="project-card-content">
-            <p>
-              Analisis kebutuhan petugas pada layanan
-              Instalasi Farmasi Rawat Jalan menggunakan
-              metode Discrete Event Simulation untuk
-              mengevaluasi kapasitas pelayanan.
-            </p>
 
-            <div class="project-tools">
-              DATA ANALYSIS · OPERATIONS
-            </div>
+            <img src="ss tugas akhir.png" alt="Tugas Akhir Preview">
+
+            <div class="project-card-content">
+              <p>
+                Analisis kebutuhan petugas pada layanan
+                Instalasi Farmasi Rawat Jalan menggunakan
+                metode Discrete Event Simulation untuk
+                mengevaluasi kapasitas pelayanan.
+              </p>
+
+              <div class="project-tools">
+                DATA ANALYSIS · OPERATIONS
+              </div>
 
               <div class="project-buttons">
-              <a href="https://docs.google.com/spreadsheets/d/1ugrTBzDkcXZ1THFmb-n8Q9xleXE4R2Zc/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" class="button">
-                View Project
-              </a>
-                </div>
-            
+                <a href="https://docs.google.com/spreadsheets/d/1ugrTBzDkcXZ1THFmb-n8Q9xleXE4R2Zc/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="button">
+                  View Project
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- KARTU 2 -->
           <div class="project-card">
             <div class="project-number">
-             LATIHAN MEMBUAT DASHBOARD EXCEL
+              LATIHAN MEMBUAT DASHBOARD EXCEL
             </div>
 
             <h3>
               Data Analysis Dashboard
             </h3>
-            <img src="ss dashbord.png" alt=" Data Analysis Dashboard Preview">
-                    <div class="project-card-content">
-            <p>
-              Pengolahan dan visualisasi data menggunakan
-              Microsoft Excel untuk menghasilkan dashboard
-              interaktif dan mendukung proses pengambilan
-              keputusan.
-            </p>
 
-            <div class="project-tools">
-              EXCEL · DATA ANALYZE · DASHBOARD
-            </div>
+            <img src="ss dashbord.png" alt="Data Analysis Dashboard Preview">
+
+            <div class="project-card-content">
+              <p>
+                Pengolahan dan visualisasi data menggunakan
+                Microsoft Excel untuk menghasilkan dashboard
+                interaktif dan mendukung proses pengambilan
+                keputusan.
+              </p>
+
+              <div class="project-tools">
+                EXCEL · DATA ANALYZE · DASHBOARD
+              </div>
 
               <div class="project-buttons">
-              <a href="https://docs.google.com/spreadsheets/d/1NyKc-b3sqWgvtmwwntm2XqWV183QDAZY/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" class="button">
-                View Project
-              </a>
-                </div>
+                <a href="https://docs.google.com/spreadsheets/d/1NyKc-b3sqWgvtmwwntm2XqWV183QDAZY/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="button">
+                  View Project
+                </a>
+              </div>
+            </div>
+          </div>
 
+          <!-- KARTU 3 -->
           <div class="project-card">
-
             <div class="project-number">
-             LATIHAN DATA ANALYST
+              LATIHAN DATA ANALYST
             </div>
 
             <h3>
               Business Data Analysis
             </h3>
-            <img src="" alt=" LATIHAN DATA ANALYST Preview">
-                    <div class="project-card-content">
-            <p>
-              Analisis data bisnis untuk mengidentifikasi
-              pola, mengevaluasi performa, dan menemukan
-              peluang perbaikan.
-            </p>
 
-            <div class="project-tools">
-              BUSINESS ANALYSIS · REPORTING
-            
-            </div>
+            <img src="" alt="Latihan Data Analyst Preview">
+
+            <div class="project-card-content">
+              <p>
+                Analisis data bisnis untuk mengidentifikasi
+                pola, mengevaluasi performa, dan menemukan
+                peluang perbaikan.
+              </p>
+
+              <div class="project-tools">
+                BUSINESS ANALYSIS · REPORTING
+              </div>
+
               <div class="project-buttons">
-              <a href="https://docs.google.com/spreadsheets/d/1NyKc-b3sqWgvtmwwntm2XqWV183QDAZY/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" class="button">
-                View Project
-              </a>
-                </div>
-    
-           <div class="project-card">
+                <a href="https://docs.google.com/spreadsheets/d/1NyKc-b3sqWgvtmwwntm2XqWV183QDAZY/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="button">
+                  View Project
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- KARTU 4 -->
+          <div class="project-card">
             <div class="project-number">
-            RISET KULIAH LUAR KAMPUS (KLK)
+              RISET KULIAH LUAR KAMPUS (KLK)
             </div>
+
             <h3>
-             Analisis Sensitivitas Perubahan Harga Dan Biaya 
+              Analisis Sensitivitas Perubahan Harga Dan Biaya
             </h3>
-           <img src="klk lada putih" alt=" KLK RISET LADA PUTIH Preview">
-                    <div class="project-card-content">
-            <p>
-              Analisis Sensitivitas Terhadap Perubahan Harga Dan Biaya 
-              Pada Usahatani Lada Putih Di Namang, Bangka Tengah. 
-              Analisis ini terdiri dari beberapa skenario yang 
-              mungkin akan dihadapi oleh petani lada putih
-            </p>
 
-            <div class="project-tools">
-              RESEARCH · TEAMWORK · SENSITIVITY ANALYTICAL
-             
-            </div>
+            <img src="klk lada putih.png" alt="KLK Riset Lada Putih Preview">
+
+            <div class="project-card-content">
+              <p>
+                Analisis Sensitivitas Terhadap Perubahan Harga Dan Biaya
+                Pada Usahatani Lada Putih Di Namang, Bangka Tengah.
+                Analisis ini terdiri dari beberapa skenario yang
+                mungkin akan dihadapi oleh petani lada putih.
+              </p>
+
+              <div class="project-tools">
+                RESEARCH · TEAMWORK · SENSITIVITY ANALYTICAL
+              </div>
+
               <div class="project-buttons">
-              <a href="https://docs.google.com/spreadsheets/d/1F0fiRuvx05Qf3bui-uvv8ATIbLAutoaZ/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" class="button">
-                View Project
-              </a>
-                </div>
-
+                <a href="https://docs.google.com/spreadsheets/d/1F0fiRuvx05Qf3bui-uvv8ATIbLAutoaZ/edit?usp=drive_link&ouid=101361672001910172845&rtpof=true&sd=true" target="_blank" rel="noopener noreferrer" class="button">
+                  View Project
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
-
 
     <!-- SECTION 4: SKILLS -->
     <section class="slide" id="skills">
-
       <div class="container">
-
         <h2>
-          Skills & <span class="gold">Tools.</span>
+          Skills &amp; <span class="gold">Tools.</span>
         </h2>
 
         <p class="description">
@@ -826,9 +807,7 @@
         </p>
 
         <div class="skills-grid">
-
           <div class="skill-card">
-
             <h3>Technical Skills</h3>
 
             <div class="skill-list">
@@ -839,13 +818,10 @@
               <span>Basic Statistics</span>
               <span>Dashboard Development</span>
             </div>
-
           </div>
 
-
           <div class="skill-card">
-
-            <h3>Tools & Software</h3>
+            <h3>Tools &amp; Software</h3>
 
             <div class="skill-list">
               <span>Microsoft Excel</span>
@@ -855,12 +831,9 @@
               <span>SQL</span>
               <span>Google AI Studio</span>
             </div>
-
           </div>
 
-
           <div class="skill-card">
-
             <h3>Soft Skills</h3>
 
             <div class="skill-list">
@@ -871,12 +844,9 @@
               <span>Time Management</span>
               <span>Teamwork</span>
             </div>
-
           </div>
 
-
           <div class="skill-card">
-
             <h3>Let's Connect</h3>
 
             <p class="description">
@@ -885,60 +855,53 @@
               memberikan kontribusi profesional.
             </p>
 
-            <a href="bimaanhima24@gmail.com" class="button">
-              Email Me 
+            <a href="mailto:bimaanhima24@gmail.com" class="button">
+              Email Me
             </a>
-
           </div>
-
         </div>
-
       </div>
-
     </section>
 
   </main>
 
   <footer>
-    © <span id="2026"></span> Bima.
-    All Rights Reserved.
+    © <span id="year">2026</span> Bima. All Rights Reserved.
   </footer>
 
-
   <!-- JAVASCRIPT -->
- <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll("section[id]");
-    const navLinks = document.querySelectorAll('a[href^="#"]');
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll('a[href^="#"]');
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute("id");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute("id");
 
-            navLinks.forEach((link) => {
-              // Abaikan logo PORTFOLIO. yang mungkin juga memakai href="#about"
-              if (link.textContent.trim().toUpperCase().includes("PORTFOLIO")) return;
+              navLinks.forEach((link) => {
+                if (link.textContent.trim().toUpperCase().includes("PORTFOLIO")) return;
 
-              link.classList.remove("active");
-              if (link.getAttribute("href") === `#${id}`) {
-                link.classList.add("active");
-              }
-            });
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "-20% 0px -60% 0px", // Mendeteksi section yang berada di area tengah-atas layar
-        threshold: 0
-      }
-    );
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${id}`) {
+                  link.classList.add("active");
+                }
+              });
+            }
+          });
+        },
+        {
+          root: null,
+          rootMargin: "-20% 0px -60% 0px",
+          threshold: 0
+        }
+      );
 
-    sections.forEach((section) => observer.observe(section));
-  });
-</script>
+      sections.forEach((section) => observer.observe(section));
+    });
+  </script>
 
 </body>
 </html>
