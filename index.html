@@ -446,31 +446,46 @@
 
 
     /* TOOLS */
+    .tools-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+      gap: 12px;
+      width: 100%;
+    }
 
+    .tool-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background-color: #f4f1ea;
+      padding: 12px 8px;
+      border-radius: 6px;
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-          .tools-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-      
-      .tool-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px; /* Jarak antara logo dan teks */
-        background-color: #f4f1ea; /* Sesuaikan dengan warna badge saat ini */
-        padding: 8px 14px;
-        border-radius: 6px;
-        font-size: 14px;
-        color: #333333;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-      
-      .tool-badge img {
-        width: 18px;
-        height: 18px;
-        object-fit: contain; /* Agar rasio logo tidak gepeng */
-      }
+    .tool-badge img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .tool-badge span {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.25;
+      background: transparent;
+      padding: 0;
+    }
+
+    .tool-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+    }
       
       /* Efek interaktif opsional saat kursor diarahkan */
       .tool-badge:hover {
@@ -858,51 +873,60 @@
             </div>
           </div>
 
-          <div class="skill-card">
+      <div class="skill-card">
             <h3>Tools &amp; Software</h3>
 
-            <div class="skill-list">
-       <div class="tools-container">
-         
-         <div class="tool-badge">
-          <img src="https://devicons.io/devicons/icons/microsoft-excel.svg" alt="Excel" />
-        </div>
+            <div class="tools-container">
+              <div class="tool-badge">
+                <img src="https://devicons.io/devicons/icons/microsoft-excel.svg" alt="Microsoft Excel" />
+                <span>Excel</span>
+              </div>
 
-          <div class="tool-badge">
-          <img src="https://devicons.io/devicons/icons/tableau-icon.svg" alt="Tableau" />
-        </div>
-         
-         <div class="tool-badge">
-          <img src="https://icon.icepanel.io/Technology/svg/Minitab.svg" alt="Minitab" />
-        </div>
-      
-        <div class="tool-badge">
-          <img src="https://cdn.simpleicons.org/googlecolab/F9AB00" alt="Google Colab" />
-        </div>
-      
-        <div class="tool-badge">
-          <img src="img/icons/img/icons/5293486-middle.png" alt="BPMN.io" />
-        </div>
+              <div class="tool-badge">
+                <img src="https://devicons.io/devicons/icons/tableau-icon.svg" alt="Tableau" />
+                <span>Tableau</span>
+              </div>
 
-          <div class="tool-badge">
-          <img src="https://devicons.io/devicons/icons/google-ai-studio-icon.svg" alt="Google Ai Studio" />
-        </div>
+              <div class="tool-badge">
+                <img src="https://icon.icepanel.io/Technology/svg/Minitab.svg" alt="Minitab" />
+                <span>Minitab</span>
+              </div>
 
-          <div class="tool-badge">
-          <img src="img/icons/img/icons/ProjectLibre_logo.png" alt="Project Libre" />
-        </div>
+              <div class="tool-badge">
+                <img src="https://cdn.simpleicons.org/googlecolab/F9AB00" alt="Google Colab" />
+                <span>Google Colab</span>
+              </div>
 
-          <div class="tool-badge">
-          <img src="https://cdn.simpleicons.org/miro/050038" alt="Miro" />
-        </div>
+              <div class="tool-badge">
+                <img src="img/icons/img/icons/5293486-middle.png" alt="BPMN.io" />
+                <span>BPMN.io</span>
+              </div>
 
-          <div class="tool-badge">
-          <img src="img/icons/img/icons/unnamed (2).png" alt="Simplemind" />
+              <div class="tool-badge">
+                <img src="https://devicons.io/devicons/icons/google-ai-studio-icon.svg" alt="Google AI Studio" />
+                <span>Google AI Studio</span>
+              </div>
+
+              <div class="tool-badge">
+                <img src="img/icons/img/icons/ProjectLibre_logo.png" alt="ProjectLibre" />
+                <span>ProjectLibre</span>
+              </div>
+
+              <div class="tool-badge">
+                <img src="https://cdn.simpleicons.org/miro/050038" alt="Miro" />
+                <span>Miro</span>
+              </div>
+
+              <div class="tool-badge">
+                <img src="img/icons/img/icons/unnamed (2).png" alt="SimpleMind" />
+                <span>SimpleMind</span>
+              </div>
+
+              <div class="tool-badge">
+                <img src="https://devicons.io/devicons/icons/google-notebooklm-icon.svg" alt="NotebookLM" />
+                <span>NotebookLM</span>
+              </div>
             </div>
-
-         <div class="tool-badge">
-          <img src="https://devicons.io/devicons/icons/google-notebooklm-icon.svg" alt="Notebook LM" />
-        </div>
           </div>
 
           <div class="skill-card">
